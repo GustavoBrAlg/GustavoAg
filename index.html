@@ -3,26 +3,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Site incrível do Gustavo em construção.">
-    <title>Gustavo | Coming Soon</title>
+    <meta name="description" content="Sistema de Gerenciamento de Restaurante e Área de Pedidos">
+    <title>Gourmet Dashboard</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Icones do Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="glass-panel">
-            <h1 class="title">Olá, eu sou o <span class="highlight">Gustavo</span></h1>
-            <p class="subtitle">Meu novo site está ganhando vida.</p>
-            
-            <div class="interactive-area">
-                <button id="magic-btn" class="glow-on-hover">Descubra a Mágica</button>
-            </div>
-        </div>
-    </div>
     
-    <!-- Efeitos de fundo -->
+    <!-- Background Animado -->
     <div class="bg-shape shape-1"></div>
     <div class="bg-shape shape-2"></div>
+    <div class="bg-shape shape-3"></div>
+
+    <div class="app-container">
+        
+        <!-- ==================== TELA DE LOGIN ==================== -->
+        <section id="view-login" class="view active">
+            <div class="glass-panel login-panel">
+                <div class="logo-area">
+                    <i class="ph-fill ph-cooking-pot"></i>
+                    <h2>Gourmet<span class="highlight">Sys</span></h2>
+                </div>
+                <p class="subtitle">Faça login para continuar</p>
+                
+                <form id="login-form">
+                    <div class="input-group">
+                        <i class="ph ph-user"></i>
+                        <input type="text" id="login-user" placeholder="Usuário (admin ou cliente)" required>
+                    </div>
+                    <div class="input-group">
+                        <i class="ph ph-lock-key"></i>
+                        <input type="password" id="login-pass" placeholder="Senha" required>
+                    </div>
+                    <button type="submit" class="btn-primary glow-on-hover">Entrar</button>
+                </form>
+                
+                <div class="login-hints">
+                    <small>Dica: use <b>admin</b> para acessar a gerência, ou <b>cliente</b> para pedir comida.</small>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TELA DO ADMIN ==================== -->
+        <section id="view-admin" class="view hidden">
+            <nav class="topbar glass-panel">
+                <div class="logo-area-small">
+                    <i class="ph-fill ph-cooking-pot"></i>
+                    <h3>Gourmet<span class="highlight">Admin</span></h3>
+                </div>
+                <div class="user-actions">
+                    <span class="user-name">Olá, Administrador</span>
+                    <button class="btn-icon btn-logout" title="Sair"><i class="ph ph-sign-out"></i></button>
+                </div>
+            </nav>
+
+            <div class="dashboard-grid">
+                
+                <!-- Cadastro de Funcionários -->
+                <div class="glass-panel card">
+                    <div class="card-header">
+                        <h4><i class="ph ph-users"></i> Equipe</h4>
+                    </div>
+                    
+                    <form id="form-employee" class="inline-form">
+                        <input type="text" id="emp-name" placeholder="Nome" required>
+                        <select id="emp-role" required>
+                            <option value="" disabled selected>Cargo</option>
+                            <option value="Garçom">Garçom</option>
+                            <option value="Cozinheiro">Cozinheiro</option>
+                            <option value="Gerente">Gerente</option>
+                        </select>
+                        <button type="submit" class="btn-secondary">Adicionar</button>
+                    </form>
+
+                    <div class="list-container">
+                        <ul id="employee-list" class="item-list">
+                            <!-- Funcionários renderizados via JS -->
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apps Parceiros -->
+                <div class="glass-panel card">
+                    <div class="card-header">
+                        <h4><i class="ph ph-storefront"></i> Apps Parceiros</h4>
+                    </div>
+                    
+                    <div class="partner-list">
+                        <div class="partner-item">
+                            <div class="partner-info">
+                                <div class="partner-icon ifood">iF</div>
+                                <span>iFood Delivery</span>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="partner-item">
+                            <div class="partner-info">
+                                <div class="partner-icon rappi">R</div>
+                                <span>Rappi</span>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="partner-item">
+                            <div class="partner-info">
+                                <div class="partner-icon uber">UE</div>
+                                <span>Uber Eats</span>
+                            </div>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== TELA DO CLIENTE ==================== -->
+        <section id="view-customer" class="view hidden">
+            <nav class="topbar glass-panel">
+                <div class="logo-area-small">
+                    <i class="ph-fill ph-fork-knife"></i>
+                    <h3>Gourmet<span class="highlight">Menu</span></h3>
+                </div>
+                <div class="user-actions">
+                    <button class="btn-icon" id="btn-cart">
+                        <i class="ph ph-shopping-cart"></i>
+                        <span id="cart-badge" class="badge">0</span>
+                    </button>
+                    <button class="btn-icon btn-logout" title="Sair"><i class="ph ph-sign-out"></i></button>
+                </div>
+            </nav>
+
+            <div class="menu-container">
+                <h2 class="section-title">Nosso Cardápio</h2>
+                <div class="menu-grid" id="menu-grid">
+                    <!-- Pratos renderizados via JS -->
+                </div>
+            </div>
+
+            <!-- Modal do Carrinho -->
+            <div id="cart-modal" class="modal-overlay hidden">
+                <div class="glass-panel cart-panel">
+                    <div class="cart-header">
+                        <h3>Seu Pedido</h3>
+                        <button class="btn-icon" id="close-cart"><i class="ph ph-x"></i></button>
+                    </div>
+                    <div class="cart-items" id="cart-items">
+                        <p class="empty-msg">Seu carrinho está vazio.</p>
+                    </div>
+                    <div class="cart-footer">
+                        <div class="cart-total">Total: <span class="highlight">R$ <span id="cart-total-value">0.00</span></span></div>
+                        <button class="btn-primary" id="btn-checkout">Finalizar Pedido</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
 
     <script src="main.js"></script>
 </body>
