@@ -378,3 +378,72 @@ body {
     padding: 2px 6px;
     font-size: 0.8rem;
 }
+
+/* ================== RESPONSIVIDADE (MOBILE & TABLET) ================== */
+@media (max-width: 768px) {
+    /* Ajustes na Barra Superior */
+    .topbar-green {
+        padding: 0 1rem;
+    }
+    
+    .nav-item {
+        font-size: 0; /* Esconde o texto */
+    }
+    .nav-item i {
+        font-size: 1.5rem; /* Mostra apenas o ícone maior */
+    }
+    
+    .logo-center {
+        font-size: 1.3rem;
+    }
+    
+    .search-bar {
+        display: none; /* Esconde a barra de busca no celular para ganhar espaço */
+    }
+    
+    .login-btn-green {
+        padding: 6px 10px;
+        font-size: 0; /* Esconde o texto "Sair" */
+    }
+    .login-btn-green i {
+        font-size: 1.2rem;
+        margin: 0;
+    }
+
+    /* Grid do Admin */
+    .admin-grid {
+        grid-template-columns: 1fr; /* Coloca tudo em uma coluna */
+    }
+
+    .inline-form {
+        flex-direction: column;
+    }
+    
+    .inline-form button {
+        width: 100%;
+    }
+
+    /* Grid do Menu */
+    .menu-grid {
+        grid-template-columns: 1fr; /* 1 card por linha no celular */
+    }
+
+    .menu-card {
+        height: 250px; /* Reduz a altura da imagem no celular */
+    }
+
+    /* Modal do Carrinho */
+    .cart-panel {
+        width: 100%; /* Ocupa a tela toda */
+        border-radius: 0;
+    }
+    
+    .hero-banner {
+        height: 180px;
+    }
+    
+    .hero-banner .overlay-text {
+        font-size: 1.2rem;
+        padding: 0.5rem 1rem;
+    }
+}
