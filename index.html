@@ -3,31 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sistema de Gerenciamento de Restaurante e Área de Pedidos">
     <title>Gourmet Dashboard</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Icones do Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
-    
-    <!-- Background Animado -->
-    <div class="bg-shape shape-1"></div>
-    <div class="bg-shape shape-2"></div>
-    <div class="bg-shape shape-3"></div>
 
-    <div class="app-container">
-        
-        <!-- ==================== TELA DE LOGIN ==================== -->
-        <section id="view-login" class="view active">
-            <div class="glass-panel login-panel">
-                <div class="logo-area">
-                    <i class="ph-fill ph-cooking-pot"></i>
-                    <h2>Gourmet<span class="highlight">Sys</span></h2>
-                </div>
-                <p class="subtitle">Faça login para continuar</p>
-                
+    <!-- ==================== TELA DE LOGIN ==================== -->
+    <section id="view-login" class="view active">
+        <header class="topbar-green">
+            <div class="topbar-left">
+                <div class="nav-item"><i class="ph ph-list"></i> MENU</div>
+            </div>
+            <div class="logo-center">ge <span style="font-weight: 300;">restaurante</span></div>
+            <div class="topbar-right">
+                <div class="search-bar"><i class="ph ph-magnifying-glass"></i> BUSCAR</div>
+            </div>
+        </header>
+
+        <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center;">
+            <div class="login-box">
+                <h2>Entrar no Sistema</h2>
                 <form id="login-form">
                     <div class="input-group">
                         <i class="ph ph-user"></i>
@@ -37,139 +33,134 @@
                         <i class="ph ph-lock-key"></i>
                         <input type="password" id="login-pass" placeholder="Senha" required>
                     </div>
-                    <button type="submit" class="btn-primary glow-on-hover">Entrar</button>
+                    <button type="submit" class="btn-primary">Acessar Conta</button>
                 </form>
-                
-                <div class="login-hints">
-                    <small>Dica: use <b>admin</b> para acessar a gerência, ou <b>cliente</b> para pedir comida.</small>
-                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- ==================== TELA DO ADMIN ==================== -->
-        <section id="view-admin" class="view hidden">
-            <nav class="topbar glass-panel">
-                <div class="logo-area-small">
-                    <i class="ph-fill ph-cooking-pot"></i>
-                    <h3>Gourmet<span class="highlight">Admin</span></h3>
-                </div>
-                <div class="user-actions">
-                    <span class="user-name">Olá, Administrador</span>
-                    <button class="btn-icon btn-logout" title="Sair"><i class="ph ph-sign-out"></i></button>
-                </div>
-            </nav>
+    <!-- ==================== TELA DO ADMIN ==================== -->
+    <section id="view-admin" class="view">
+        <header class="topbar-green">
+            <div class="topbar-left">
+                <div class="nav-item"><i class="ph ph-list"></i> MENU</div>
+                <div class="nav-item"><i class="ph ph-shield"></i> GESTÃO</div>
+            </div>
+            <div class="logo-center">ge <span style="font-weight: 300;">admin</span></div>
+            <div class="topbar-right">
+                <button class="login-btn-green btn-logout">
+                    <i class="ph ph-user"></i> Sair
+                </button>
+            </div>
+        </header>
 
-            <div class="dashboard-grid">
+        <div class="content-container">
+            <div class="admin-grid">
                 
                 <!-- Cadastro de Funcionários -->
-                <div class="glass-panel card">
-                    <div class="card-header">
-                        <h4><i class="ph ph-users"></i> Equipe</h4>
-                    </div>
-                    
+                <div class="white-card">
+                    <h3>Cadastro de Equipe</h3>
                     <form id="form-employee" class="inline-form">
-                        <input type="text" id="emp-name" placeholder="Nome" required>
+                        <input type="text" id="emp-name" placeholder="Nome do Funcionário" required>
                         <select id="emp-role" required>
                             <option value="" disabled selected>Cargo</option>
                             <option value="Garçom">Garçom</option>
                             <option value="Cozinheiro">Cozinheiro</option>
                             <option value="Gerente">Gerente</option>
                         </select>
-                        <button type="submit" class="btn-secondary">Adicionar</button>
+                        <button type="submit" class="btn-primary" style="margin-top: 0; width: auto;">Adicionar</button>
                     </form>
 
-                    <div class="list-container">
-                        <ul id="employee-list" class="item-list">
-                            <!-- Funcionários renderizados via JS -->
-                        </ul>
-                    </div>
+                    <ul id="employee-list" class="item-list">
+                        <!-- Funcionários via JS -->
+                    </ul>
                 </div>
 
                 <!-- Apps Parceiros -->
-                <div class="glass-panel card">
-                    <div class="card-header">
-                        <h4><i class="ph ph-storefront"></i> Apps Parceiros</h4>
-                    </div>
-                    
-                    <div class="partner-list">
-                        <div class="partner-item">
-                            <div class="partner-info">
-                                <div class="partner-icon ifood">iF</div>
-                                <span>iFood Delivery</span>
-                            </div>
-                            <label class="switch">
-                                <input type="checkbox" checked>
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
-                        <div class="partner-item">
-                            <div class="partner-info">
-                                <div class="partner-icon rappi">R</div>
-                                <span>Rappi</span>
-                            </div>
-                            <label class="switch">
-                                <input type="checkbox">
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
-                        <div class="partner-item">
-                            <div class="partner-info">
-                                <div class="partner-icon uber">UE</div>
-                                <span>Uber Eats</span>
-                            </div>
-                            <label class="switch">
-                                <input type="checkbox" checked>
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
-                    </div>
+                <div class="white-card">
+                    <h3>Apps Parceiros</h3>
+                    <ul class="item-list">
+                        <li>
+                            <strong>iFood Delivery</strong>
+                            <span style="color: var(--primary-color); font-weight: bold;">Ativo</span>
+                        </li>
+                        <li>
+                            <strong>Rappi</strong>
+                            <span style="color: var(--text-muted);">Inativo</span>
+                        </li>
+                        <li>
+                            <strong>Uber Eats</strong>
+                            <span style="color: var(--primary-color); font-weight: bold;">Ativo</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TELA DO CLIENTE ==================== -->
+    <section id="view-customer" class="view">
+        
+        <!-- Topbar Principal Verde -->
+        <header class="topbar-green">
+            <div class="topbar-left">
+                <div class="nav-item"><i class="ph ph-list"></i> MENU</div>
+                <div class="nav-item"><i class="ph ph-hamburger"></i> PRATOS</div>
+            </div>
+            <div class="logo-center">ge <span style="font-weight: 300;">restaurante</span></div>
+            <div class="topbar-right">
+                <div class="search-bar"><i class="ph ph-magnifying-glass"></i> BUSCAR</div>
+                <button class="login-btn-green btn-logout">
+                    <i class="ph ph-user"></i> Sair
+                </button>
+            </div>
+        </header>
+
+        <!-- Secondary Bar Branca -->
+        <div class="secondary-bar">
+            <div style="display: flex; align-items: center; gap: 10px; font-weight: bold; font-size: 1.2rem;">
+                <i class="ph-fill ph-storefront"></i> O seu restaurante favorito em casa
+            </div>
+            <button class="btn-primary" id="btn-cart" style="margin-top: 0; width: auto; padding: 6px 16px;">
+                <i class="ph ph-shopping-cart"></i> Carrinho <span id="cart-badge" class="badge">0</span>
+            </button>
+        </div>
+
+        <!-- Banner Laranja -->
+        <div class="content-container" style="padding-bottom: 0;">
+            <div class="hero-banner">
+                <div class="overlay-text">
+                    Nova seleção de pratos com entrega grátis!
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- ==================== TELA DO CLIENTE ==================== -->
-        <section id="view-customer" class="view hidden">
-            <nav class="topbar glass-panel">
-                <div class="logo-area-small">
-                    <i class="ph-fill ph-fork-knife"></i>
-                    <h3>Gourmet<span class="highlight">Menu</span></h3>
-                </div>
-                <div class="user-actions">
-                    <button class="btn-icon" id="btn-cart">
-                        <i class="ph ph-shopping-cart"></i>
-                        <span id="cart-badge" class="badge">0</span>
-                    </button>
-                    <button class="btn-icon btn-logout" title="Sair"><i class="ph ph-sign-out"></i></button>
-                </div>
-            </nav>
+        <!-- Grid de Cardápio estilo Notícias -->
+        <div class="content-container">
+            <div class="menu-grid" id="menu-grid">
+                <!-- Pratos renderizados via JS -->
+            </div>
+        </div>
 
-            <div class="menu-container">
-                <h2 class="section-title">Nosso Cardápio</h2>
-                <div class="menu-grid" id="menu-grid">
-                    <!-- Pratos renderizados via JS -->
+        <!-- Modal do Carrinho -->
+        <div id="cart-modal" class="modal-overlay hidden">
+            <div class="cart-panel">
+                <div class="cart-header">
+                    <h2>Seu Pedido</h2>
+                    <button id="close-cart" style="background: none; border: none; cursor: pointer; font-size: 1.5rem;"><i class="ph ph-x"></i></button>
+                </div>
+                <div class="cart-items" id="cart-items">
+                    <!-- Itens -->
+                </div>
+                <div class="cart-footer">
+                    <div class="cart-total">Total: <span>R$ <span id="cart-total-value">0.00</span></span></div>
+                    <button class="btn-primary" id="btn-checkout">Finalizar Pedido</button>
                 </div>
             </div>
+        </div>
 
-            <!-- Modal do Carrinho -->
-            <div id="cart-modal" class="modal-overlay hidden">
-                <div class="glass-panel cart-panel">
-                    <div class="cart-header">
-                        <h3>Seu Pedido</h3>
-                        <button class="btn-icon" id="close-cart"><i class="ph ph-x"></i></button>
-                    </div>
-                    <div class="cart-items" id="cart-items">
-                        <p class="empty-msg">Seu carrinho está vazio.</p>
-                    </div>
-                    <div class="cart-footer">
-                        <div class="cart-total">Total: <span class="highlight">R$ <span id="cart-total-value">0.00</span></span></div>
-                        <button class="btn-primary" id="btn-checkout">Finalizar Pedido</button>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-
-    </div>
+    </section>
 
     <script src="main.js"></script>
 </body>

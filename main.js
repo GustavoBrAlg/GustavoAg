@@ -113,9 +113,7 @@ function renderMenu() {
                 <p class="menu-desc">${item.desc}</p>
                 <div class="menu-footer">
                     <span class="menu-price">R$ ${item.price.toFixed(2)}</span>
-                    <button class="btn-icon" style="background: rgba(249, 115, 22, 0.2); color: #f97316;" onclick="addToCart(${item.id})">
-                        <i class="ph ph-plus"></i>
-                    </button>
+                    <button class="btn-add" onclick="addToCart(${item.id})">Pedir</button>
                 </div>
             </div>
         `;
